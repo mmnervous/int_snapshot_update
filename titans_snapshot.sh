@@ -2,7 +2,8 @@
 
 SNAPSHOT="https://blockdata-1258895559.cos.ap-shanghai.myqcloud.com/intchainData-20201217.tar.gz"
 
-echo -n "Did you stop intchain? (y/n)? Last update Fri 18 Dec 2020 01:35 PM CET"
+echo "Last update Fri 18 Dec 2020 01:37 PM CET"
+echo -n "Did you stop intchain? (y/n)? "
 read answer
 if [ "$answer" != "${answer#[Yy]}" ] ;then
 			rm -rf /tmp/intchain*
