@@ -13,7 +13,7 @@ while true; do
 			mkdir -p "${HOME}/.intchain/"
 			echo "Extracting '/tmp/intchainData-20201217.tar.gz' to '${HOME}/.intchain/'"
 			tar -C "${HOME}/.intchain/" -xzvf "/tmp/intchainData-20201217.tar.gz" --strip-components 1 > ~/return.log
-			echo "end"
+			echo "Almost done is not done. But this is the end of this script. If you see this message it means -"
 			;;
 		[Nn]* ) exit;;
 		* ) echo "Please answer yes or no.";;
