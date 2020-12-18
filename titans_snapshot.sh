@@ -9,4 +9,4 @@ rm -rf "${HOME}/.intchain/"
 mkdir -p "${HOME}/.intchain/"
 echo "Extracting '/tmp/intchainData-20201217.tar.gz' to '${HOME}/.intchain/'"
 tar -C "${HOME}/.intchain/" -xzvf "/tmp/intchainData-20201217.tar.gz" --strip-components 1 > ~/return.log
-echo "done you can start intchain"
+echo "end"
