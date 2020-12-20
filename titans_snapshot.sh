@@ -3,7 +3,7 @@
 SNAPSHOT="http://shaiiko.com/intchainData-20201217.tar.gz"
 SNAPSHOT_2="https://blockdata-1258895559.cos.ap-shanghai.myqcloud.com/intchainData-20201217.tar.gz"
 
-echo "Last update Fri 20 Dec 2020 03:52 PM CET"
+echo "Last update Fri 20 Dec 2020 6:17 PM CET"
 echo -n "Did you stop intchain? (y/n)? "
 read answer
 if [ "$answer" != "${answer#[Yy]}" ] ;then
