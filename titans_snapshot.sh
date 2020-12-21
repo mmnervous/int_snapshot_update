@@ -2,8 +2,9 @@
 
 SNAPSHOT="http://shaiiko.com/intchainData-20201217.tar.gz"
 SNAPSHOT_2="https://blockdata-1258895559.cos.ap-shanghai.myqcloud.com/intchainData-20201217.tar.gz"
+FILE=/tmp/intchainData-20201217.tar.gz
 
-echo "Last update Fri 20 Dec 2020 6:17 PM CET"
+echo "Last update Fri 21 Dec 2020 10:58 AM CET"
 echo -n "Did you stop intchain? (y/n)? "
 read answer
 if [ "$answer" != "${answer#[Yy]}" ] ;then
@@ -17,15 +18,20 @@ if [ "$answer" != "${answer#[Yy]}" ] ;then
 			echo -n "Start extraction (y/n)? "
 			read answer
 			if [ "$answer" != "${answer#[Yy]}" ] ;then
-				rm -rf "${HOME}/.intchain/"
-				mkdir -p "${HOME}/.intchain/"
-				echo "Extracting '/tmp/intchainData-20201217.tar.gz' to '${HOME}/.intchain/'"
-				tar -C "${HOME}/.intchain/" -xzvf "/tmp/intchainData-20201217.tar.gz" --strip-components 1 2>&1 |
-				while read line; do
-					x=$((x+1))
-					echo -en "$x extracted\r"
-				done
-				echo "Almost done is not done. But this is the end of this script. If you see this message it means -"
+				if [ -f "$FILE" ]; then
+					echo "$FILE exists."
+					rm -rf "${HOME}/.intchain/"
+					mkdir -p "${HOME}/.intchain/"
+					echo "Extracting '/tmp/intchainData-20201217.tar.gz' to '${HOME}/.intchain/'"
+					tar -C "${HOME}/.intchain/" -xzvf "/tmp/intchainData-20201217.tar.gz" --strip-components 1 2>&1 |
+					while read line; do
+						x=$((x+1))
+						echo -en "$x extracted\r"
+					done
+					echo "Extraction done !"
+				else
+					echo "$FILE does not exist. You have to download it."
+				fi
 			fi
 else
 	echo "You have to stop intchain first"
