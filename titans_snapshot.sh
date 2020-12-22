@@ -31,7 +31,7 @@ if [[ -z "${intchain_pid}" ]]; then
 	echo -en "\e[33mBackup your files (y/n)? \e[0m"
 	read answer
 	if [ "$answer" != "${answer#[Yy]}" ] ;then
-		mkdir -p backup
+		mkdir -p ~/backup
 		rm -rf $backup_file
 		tar -cvf "${backup_file}" $(find ${data_dir} -name "UTC*" -or -name "nodekey" -or -name "priv_validator.json")
 	fi
