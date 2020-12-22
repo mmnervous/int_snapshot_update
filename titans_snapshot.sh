@@ -12,7 +12,7 @@ backup_dir="${HOME}/backup"
 backup_file="${backup_dir}/int_backup.tar"
 intchain_pid="$(pidof intchain)"
 
-echo -e "\e[94mLast update Fri 22 Dec 2020 3:45 PM CET | Block height 825,656\e[0m"
+echo -e "\e[94mLast update Fri 22 Dec 2020 4:36 PM CET | Block height 825,656\e[0m"
 if [[ -z "${intchain_pid}" ]]; then
 
 	# Download
