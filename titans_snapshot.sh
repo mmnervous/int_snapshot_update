@@ -15,11 +15,11 @@ backup_dir="${HOME}/backup"
 backup_file="${backup_dir}/int_backup.tar"
 intchain_pid="$(pidof intchain)"
 
-echo "Last update Fri 22 Dec 2020 3:45 PM CET | Block height 825,656"
+echo -e "\e[94mLast update Fri 22 Dec 2020 3:45 PM CET | Block height 825,656\e[0m"
 if [[ -z "${intchain_pid}" ]]; then
 
 	# Download
-	echo -n "Start download (y/n)? "
+	echo -en "\e[33mStart download (y/n)? \e[0m"
 	read answer
 	if [ "$answer" != "${answer#[Yy]}" ] ;then
 		rm -rf /tmp/*intchain*
@@ -28,7 +28,7 @@ if [[ -z "${intchain_pid}" ]]; then
 	fi
 
 	# Backup
-	echo -n "Backup your files (y/n)? "
+	echo -en "\e[33mBackup your files (y/n)? \e[0m"
 	read answer
 	if [ "$answer" != "${answer#[Yy]}" ] ;then
 		mkdir -p backup
@@ -37,7 +37,7 @@ if [[ -z "${intchain_pid}" ]]; then
 	fi
 
 	# Exctraction
-	echo -n "Start extraction (y/n)? "
+	echo -en "\e[33mStart extraction (y/n)? \e[0m"
 	read answer
 	if [ "$answer" != "${answer#[Yy]}" ] ;then
 		if [ -f "$FILE" ]; then
@@ -50,20 +50,21 @@ if [[ -z "${intchain_pid}" ]]; then
 				x=$((x+1))
 				echo -en "$x extracted\r"
 			done
-			echo "Extraction done !"
+			echo -e "\e[32mExtraction done !\e[0m"
 		else
-			echo "$FILE does not exist. You have to download it. > EXIT"
+			echo -e "$FILE \e[31mdoes not exist. You have to download it. > EXIT\e[0m"
 			exit
 		fi
 	fi
 
 	# restore back up
-	echo -n "Restore your files (y/n)? "
+	echo -en "\e[33mRestore your files (y/n)? \e[0m"
 	read answer
 	if [ "$answer" != "${answer#[Yy]}" ] ;then
 		tar -xvf ${backup_file} -C "/"
 	fi
+	echo -e "\e[32mDone ! End of script\e[0m"
 else
-	echo "You have to stop intchain first > EXIT"
+	echo -e "\e[31mYou have to stop intchain first > EXIT\e[0m"
 	exit
 fi
