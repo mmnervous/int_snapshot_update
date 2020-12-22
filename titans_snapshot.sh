@@ -10,7 +10,7 @@ backup_dir="${HOME}/backup"
 backup_file="${backup_dir}/int_backup.tar"
 FILE=/tmp/mmch_825656_intchainData-20201222.tar.gz
 
-echo "Last update Fri 22 Dec 2020 3:13 PM CET"
+echo "Last update Fri 22 Dec 2020 3:13 PM CET | Block height 825,656"
 echo -n "Did you stop intchain? (y/n)? "
 read answer
 if [ "$answer" != "${answer#[Yy]}" ] ;then
