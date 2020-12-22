@@ -4,8 +4,9 @@
 # Snapshot 17th December http://shaiiko.com/intchainData-20201217.tar.gz
 # Snapshot 17th December https://blockdata-1258895559.cos.ap-shanghai.myqcloud.com/intchainData-20201217.tar.gz
 
-SNAPSHOT="http://shaiiko.com/mmch_825656_intchainData-20201222.tar.gz"
-FILE=/tmp/mmch_825656_intchainData-20201222.tar.gz
+FILE_NAME="mmch_825656_intchainData-20201222.tar.gz"
+SNAPSHOT="http://shaiiko.com/${FILE_NAME}"
+FILE="/tmp/${FILE_NAME}"
 data_dir="${HOME}/.intchain"
 backup_dir="${HOME}/backup"
 backup_file="${backup_dir}/int_backup.tar"
