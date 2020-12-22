@@ -1,12 +1,8 @@
-# Blockchain snapshot
+#!/bin/bash
+
+# Script to resync INTCHAIN 4.0 Node written by @MMnervous
 # Snapshot 17th December http://shaiiko.com/intchainData-20201217.tar.gz
 # Snapshot 17th December https://blockdata-1258895559.cos.ap-shanghai.myqcloud.com/intchainData-20201217.tar.gz
-# tar -xvf ${backup_file} -C "/"
-
-# if [[ -n "${intchain_pid}" ]]; then
-#     echo "INTCHAIN is running > exit"
-#     exit
-# fi
 
 SNAPSHOT="http://shaiiko.com/mmch_825656_intchainData-20201222.tar.gz"
 FILE=/tmp/mmch_825656_intchainData-20201222.tar.gz
