@@ -19,7 +19,7 @@ YLW='\e[33m'
 BLU='\e[94m'
 CLR='\e[0m'
 
-echo -e "$BLU Last update Fri 22 Dec 2020 4:36 PM CET | Block height 825,656 $CLR"
+echo -e "$BLU Last update Fri 22 Dec 2020 5:46 PM CET | Block height 825,656 $CLR"
 if [[ -z "${intchain_pid}" ]]; then
 
 	# Download
