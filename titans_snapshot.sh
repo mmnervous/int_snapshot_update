@@ -12,7 +12,7 @@ if [ "$answer" != "${answer#[Yy]}" ] ;then
 			echo -n "Start download (y/n)? "
 			read answer
 			if [ "$answer" != "${answer#[Yy]}" ] ;then
-				rm -rf /tmp/intchain*
+				rm -rf /tmp/*intchain*
 				echo "Downloading blockchain snapshot from $SNAPSHOT"
 				wget -q --show-progress "$SNAPSHOT" -P "/tmp/"
 			fi
@@ -23,8 +23,8 @@ if [ "$answer" != "${answer#[Yy]}" ] ;then
 					echo "$FILE exists."
 					rm -rf "${HOME}/.intchain/"
 					mkdir -p "${HOME}/.intchain/"
-					echo "Extracting '/tmp/intchainData-20201217.tar.gz' to '${HOME}/.intchain/'"
-					tar -C "${HOME}/.intchain/" -xzvf "/tmp/intchainData-20201217.tar.gz" --strip-components 1 2>&1 |
+					echo "Extracting '/tmp/mmch_intchainData-20201217.tar.gz' to '${HOME}/.intchain/'"
+					tar -C "${HOME}/.intchain/" -xzvf "/tmp/mmch_intchainData-20201217.tar.gz" --strip-components 1 2>&1 |
 					while read line; do
 						x=$((x+1))
 						echo -en "$x extracted\r"
