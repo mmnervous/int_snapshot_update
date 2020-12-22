@@ -12,11 +12,18 @@ backup_dir="${HOME}/backup"
 backup_file="${backup_dir}/int_backup.tar"
 intchain_pid="$(pidof intchain)"
 
-echo -e "\e[94mLast update Fri 22 Dec 2020 4:36 PM CET | Block height 825,656\e[0m"
+# Color  Variables
+RED='\e[31m'
+GRN='\e[32m'
+YLW='\e[33m'
+BLU='\e[94m'
+CLR='\e[0m'
+
+echo -e "$BLU Last update Fri 22 Dec 2020 4:36 PM CET | Block height 825,656 $CLR"
 if [[ -z "${intchain_pid}" ]]; then
 
 	# Download
-	echo -en "\e[33mStart download (y/n)? \e[0m"
+	echo -en "$YLW Start download (y/n)?  $CLR"
 	read answer
 	if [ "$answer" != "${answer#[Yy]}" ] ;then
 		rm -rf /tmp/*intchain*
@@ -25,7 +32,7 @@ if [[ -z "${intchain_pid}" ]]; then
 	fi
 
 	# Backup
-	echo -en "\e[33mBackup your files (y/n)? \e[0m"
+	echo -en "$YLW Backup your files (y/n)?  $CLR"
 	read answer
 	if [ "$answer" != "${answer#[Yy]}" ] ;then
 		mkdir -p ~/backup
@@ -34,7 +41,7 @@ if [[ -z "${intchain_pid}" ]]; then
 	fi
 
 	# Exctraction
-	echo -en "\e[33mStart extraction (y/n)? \e[0m"
+	echo -en "$YLW Start extraction (y/n)?  $CLR"
 	read answer
 	if [ "$answer" != "${answer#[Yy]}" ] ;then
 		if [ -f "$FILE" ]; then
@@ -47,21 +54,21 @@ if [[ -z "${intchain_pid}" ]]; then
 				x=$((x+1))
 				echo -en "$x extracted\r"
 			done
-			echo -e "\e[32mExtraction done !\e[0m"
+			echo -e "$GRN Extraction done ! $CLR"
 		else
-			echo -e "$FILE \e[31mdoes not exist. You have to download it. > EXIT\e[0m"
+			echo -e "$FILE $RED does not exist. You have to download it. > EXIT $CLR"
 			exit
 		fi
 	fi
 
 	# restore back up
-	echo -en "\e[33mRestore your files (y/n)? \e[0m"
+	echo -en "$YLW Restore your files (y/n)?  $CLR"
 	read answer
 	if [ "$answer" != "${answer#[Yy]}" ] ;then
 		tar -xvf ${backup_file} -C "/"
 	fi
-	echo -e "\e[32mDone ! End of script\e[0m"
+	echo -e "$GRN Done ! End of script $CLR"
 else
-	echo -e "\e[31mYou have to stop intchain first > EXIT\e[0m"
+	echo -e "$RED You have to stop intchain first > EXIT $CLR"
 	exit
 fi
