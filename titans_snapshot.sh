@@ -1,10 +1,11 @@
 # Blockchain snapshot
 
-SNAPSHOT="http://shaiiko.com/intchainData-20201217.tar.gz"
+SNAPSHOT="http://shaiiko.com/mmch_intchainData-20201222.tar.gz"
+SNAPSHOT_1="http://shaiiko.com/intchainData-20201217.tar.gz"
 SNAPSHOT_2="https://blockdata-1258895559.cos.ap-shanghai.myqcloud.com/intchainData-20201217.tar.gz"
 FILE=/tmp/intchainData-20201217.tar.gz
 
-echo "Last update Fri 21 Dec 2020 10:58 AM CET"
+echo "Last update Fri 22 Dec 2020 8:26 AM CET"
 echo -n "Did you stop intchain? (y/n)? "
 read answer
 if [ "$answer" != "${answer#[Yy]}" ] ;then
