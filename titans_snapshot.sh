@@ -3,17 +3,21 @@
 # Snapshot 17th December https://blockdata-1258895559.cos.ap-shanghai.myqcloud.com/intchainData-20201217.tar.gz
 # tar -xvf ${backup_file} -C "/"
 
-SNAPSHOT="http://shaiiko.com/mmch_825656_intchainData-20201222.tar.gz"
+# if [[ -n "${intchain_pid}" ]]; then
+#     echo "INTCHAIN is running > exit"
+#     exit
+# fi
 
+SNAPSHOT="http://shaiiko.com/mmch_825656_intchainData-20201222.tar.gz"
+FILE=/tmp/mmch_825656_intchainData-20201222.tar.gz
 data_dir="${HOME}/.intchain"
 backup_dir="${HOME}/backup"
 backup_file="${backup_dir}/int_backup.tar"
-FILE=/tmp/mmch_825656_intchainData-20201222.tar.gz
+intchain_pid="$(pidof intchain)"
 
-echo "Last update Fri 22 Dec 2020 3:13 PM CET | Block height 825,656"
-echo -n "Did you stop intchain? (y/n)? "
-read answer
-if [ "$answer" != "${answer#[Yy]}" ] ;then
+echo "Last update Fri 22 Dec 2020 3:45 PM CET | Block height 825,656"
+if [[ -z "${intchain_pid}" ]]; then
+
 	# Download
 	echo -n "Start download (y/n)? "
 	read answer
@@ -48,17 +52,18 @@ if [ "$answer" != "${answer#[Yy]}" ] ;then
 			done
 			echo "Extraction done !"
 		else
-			echo "$FILE does not exist. You have to download it."
+			echo "$FILE does not exist. You have to download it. > EXIT"
+			exit
 		fi
 	fi
+
 	# restore back up
 	echo -n "Restore your files (y/n)? "
 	read answer
 	if [ "$answer" != "${answer#[Yy]}" ] ;then
 		tar -xvf ${backup_file} -C "/"
 	fi
-
 else
-	echo "You have to stop intchain first"
+	echo "You have to stop intchain first > EXIT"
 	exit
 fi
