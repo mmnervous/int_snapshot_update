@@ -4,7 +4,7 @@
 # Snapshot 17th December http://shaiiko.com/intchainData-20201217.tar.gz
 # Snapshot 17th December https://blockdata-1258895559.cos.ap-shanghai.myqcloud.com/intchainData-20201217.tar.gz
 
-FILE_NAME="mmch_825656_intchainData-20201222.tar.gz"
+FILE_NAME="intchainData-20210109.tar.gz"
 SNAPSHOT="http://shaiiko.com/${FILE_NAME}"
 FILE="/tmp/${FILE_NAME}"
 data_dir="${HOME}/.intchain"
@@ -20,7 +20,7 @@ if [[ "$(pidof intchain)" ]]; then # checking if intchain is running
 	echo -e "$RED""You have to stop intchain first $CLR"
 	exit
 else
-	echo -e "$BLU""Last update Sat 09 Jan 2021 11:53 AM CET | Block height $CLR"
+	echo -e "$BLU""Last update Sat 09 Jan 2021 11:53 AM CET | Block height 1,294,167 $CLR"
 
 	read -p "Start download (y/n)? " answer
 	if [ "$answer" != "${answer#[Yy]}" ] ;then
@@ -32,6 +32,7 @@ else
 	if [ "$answer" != "${answer#[Yy]}" ] ;then
 		tmp_dir=$(mktemp -d -t int_backup-XXX)
 		tar -cvf $tmp_dir/backup.tar $(find ${data_dir} -name "UTC*" -or -name "nodekey" -or -name "priv_validator.json")
+		BACKUP=true
 	fi
 
 	read -p "Start extraction (y/n)? " answer
@@ -53,9 +54,11 @@ else
 		fi
 	fi
 
-	read -p "Restore your files (y/n)? " answer
-	if [ "$answer" != "${answer#[Yy]}" ] ;then
-		tar -xvf $tmp_dir/backup.tar -C "/"
+	if [ $BACKUP ] ;then
+		read -p "Restore your files (y/n)? " answer
+		if [ "$answer" != "${answer#[Yy]}" ] ;then
+			tar -xvf $tmp_dir/backup.tar -C "/"
+		fi
 	fi
 	echo -e "$GRN""Done ! End of script $CLR"
 
